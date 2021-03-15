@@ -1,5 +1,5 @@
 /*
-* Class name: LinkedList
+* Class name: CustomStack
 *
 * Version info: jdk 1.8
 *
