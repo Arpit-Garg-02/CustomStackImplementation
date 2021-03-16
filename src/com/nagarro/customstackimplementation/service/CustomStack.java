@@ -148,7 +148,6 @@ public class CustomStack implements Iterable<Object> {
      */
     public void customIterator(CustomStack stack) {
         Iterator itr = stack.iterator();
-        System.out.println(itr.hasNext());
         while (itr.hasNext()) {
             System.out.println(itr.next());
         }
