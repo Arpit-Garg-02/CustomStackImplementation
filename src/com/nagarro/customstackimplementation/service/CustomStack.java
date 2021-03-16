@@ -11,19 +11,21 @@
 *
 * Last updated By: Arpit Garg
 *
-* Last updated Date: 12/Mar/2021
+* Last updated Date: 16/Mar/2021
 *
 * Description: Stack class for creating and do operations
 */
 package com.nagarro.customstackimplementation.service;
 
+import java.util.Iterator;
+
 import com.nagarro.customstackimplementation.exception.InvalidValuesException;
 import com.nagarro.customstackimplementation.model.Node;
 
-public class CustomStack {
+public class CustomStack implements Iterable<Object> {
     private static final String STACK_IS_EMPTY = "Stack is Empty!";
     int length = 0;
-    Node top = null;
+    private Node top = null;
 
     /**
      * For insert/Push value in stack
@@ -113,11 +115,11 @@ public class CustomStack {
      * @return
      */
     private Node getNode(int index) {
-        int s = length - 1;
+        int currentLength = length - 1;
         Node temp = top;
-        while (s != index) {
+        while (currentLength != index) {
             temp = temp.getNext();
-            s--;
+            currentLength--;
         }
         return temp;
     }
@@ -128,7 +130,6 @@ public class CustomStack {
     public void stackReverse() {
         int left = 0;
         int right = length - 1;
-        System.out.println(right);
         while (left < right) {
             Node leftNode = getNode(left);
             Node rightNode = getNode(right);
@@ -145,14 +146,12 @@ public class CustomStack {
      * 
      * @return
      */
-    public String toString() {
-        String output = "";
-        Node node = top;
-        while (node != null) {
-            output += ", " + node.getValue();
-            node = node.getNext();
+    public void customIterator(CustomStack stack) {
+        Iterator itr = stack.iterator();
+        System.out.println(itr.hasNext());
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
         }
-        return "[" + output.substring(1) + " ]";
     }
 
     /**
@@ -168,6 +167,11 @@ public class CustomStack {
             node = node.getNext();
         }
         System.out.println();
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new StackIterator(top);
     }
 
 }

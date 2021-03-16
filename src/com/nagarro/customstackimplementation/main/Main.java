@@ -60,7 +60,8 @@ public class Main {
             System.out.println(_6_REVERSE);
             System.out.println(_7_ITERATOR);
             System.out.println(_8_TRAVERSE);
-            int choice = scan.nextInt();
+            String choiceForOperation = scan.next();
+            int choice = new InputValidationUtil().inputValidation(choiceForOperation);
             choiceAction(choice, stack);
             System.out.println(PRESS_Y_FOR_CONTINUE);
             ch = scan.next().charAt(0);
@@ -104,11 +105,10 @@ public class Main {
 
         case 6:
             stack.stackReverse();
-            System.out.println(stack.toString());
             break;
 
         case 7:
-            System.out.println(stack.toString());
+            stack.customIterator(stack);
             break;
 
         case 8:
